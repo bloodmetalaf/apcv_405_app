@@ -52,14 +52,9 @@ pipeline {
         stage('Health Check') {
             steps {
                 sleep(time: 30, unit: 'SECONDS')
-
-                powershell '''
-                $response = Invoke-WebRequest "http://localhost:9090/health"
-                Write-Host "Status Code: $($response.StatusCode)"
-                if ($response.StatusCode -ne 200) {
-                    exit 1
+                powershell '$r = Invoke-WebRequest -UseBasicParsing http://localhost:9090/health; if ($r.StatusCode -ne 200) { exit 1 }'
                 }
-                '''
+            
             }
         }
     }
