@@ -51,7 +51,8 @@ pipeline {
 
         stage('Health Check') {
             steps {
-                bat 'curl http://localhost:9090/health'
+                bat 'timeout /t 30'
+                powershell '$response = Invoke-WebRequest "http://localhost:9090/health"; Write-Host $response.StatusCode; if ($response.StatusCode -ne 200) { exit 1 }'
             }
         }
     }
