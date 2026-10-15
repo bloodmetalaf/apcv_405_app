@@ -51,8 +51,15 @@ pipeline {
 
         stage('Health Check') {
             steps {
-                bat 'timeout /t 30'
-                powershell '$response = Invoke-WebRequest "http://localhost:9090/health"; Write-Host $response.StatusCode; if ($response.StatusCode -ne 200) { exit 1 }'
+                sleep(time: 30, unit: 'SECONDS')
+
+                powershell '''
+                $response = Invoke-WebRequest "http://localhost:9090/health"
+                Write-Host "Status Code: $($response.StatusCode)"
+                if ($response.StatusCode -ne 200) {
+                    exit 1
+                }
+                '''
             }
         }
     }
