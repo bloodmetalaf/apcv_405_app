@@ -43,7 +43,8 @@ pipeline {
 
         stage('Deploy Container') {
             steps {
-                bat 'docker rm -f apcv_405_app || exit 0'
+                bat 'docker stop apcv_405_app >nul 2>&1'
+                bat 'docker rm apcv_405_app >nul 2>&1'
                 bat 'docker run -d --name apcv_405_app -p 9090:8080 %IMAGE_NAME%:latest'
             }
         }
