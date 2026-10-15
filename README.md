@@ -10,6 +10,18 @@ This project includes an automated CI/CD pipeline using Jenkins that:
 5. Deploys the container locally
 6. Performs health checks
 
+## Repository
+
+GitHub Repository:
+
+https://github.com/bloodmetalaf/apcv_405_app
+
+DockerHub Repository:
+
+https://hub.docker.com/r/burdettbloodz/apcv_405_app
+
+
+
 ### Pipeline Status
 - Build: [![Build Status]([http://localhost:8080/buildStatus/icon?job=devops-pipeline-project](http://localhost:8080/job/devops-pipeline-project/22/stages/))](http://localhost:8080/job/devops-pipeline-project/)
 
