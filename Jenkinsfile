@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat '"C:\\Users\\blood\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" --version'
+                bat 'docker build -t %IMAGE_NAME%:latest .'
             }
         }
 
