@@ -51,7 +51,7 @@ pipeline {
 
         stage('Health Check') {
             steps {
-                powershell '(Invoke-WebRequest http://localhost:9090/health).StatusCode'
+                bat 'curl http://localhost:9090/health'
             }
         }
     }
